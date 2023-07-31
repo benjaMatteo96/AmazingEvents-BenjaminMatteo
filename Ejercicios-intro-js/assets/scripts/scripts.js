@@ -176,7 +176,7 @@ atracción y el valor de la variable resultante. */
 
 let edad_persona = Number(prompt("Ingrese la edad de la persona"))
 let altura_persona = Number(prompt("Ingrese la altura de la persona en cm"))
-let puedeSubir = edad_persona > 6 || altura_persona >=120;
+let puedeSubir = edad_persona > 6 && altura_persona >=120;
 
 console.log("puede surbir a la atraccion" + " " + puedeSubir)
 
@@ -186,3 +186,6 @@ llamada puedePasar guardar el resultado de la operación resultante de si la per
 tiene pase “VIP” o si posee un saldo mayor a 1000. Mostrando un mensaje que diga: La
 persona puede pasar y el resultado de la variable. */
 
+let pase = prompt("Ingrese el tipo de pase 'VIP', 'NORMAL', 'LIMITADO'");
+let saldo = Number(prompt("Ingrese su saldo"));
+let puedePasar = pase === "VIP" || saldo > 1000;
