@@ -1,0 +1,50 @@
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+nav {
+  min-height: 10vh;
+}
+header {
+  min-height: 20vh;
+}
+
+header img {
+  height: 30vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+main { 
+  min-height: 60vh;
+}
+.details-main {
+  min-height: 80vh;
+}
+.logo { 
+  width:4rem;
+  object-fit: contain;
+}
+
+footer {
+  min-height: 10vh;
+}
+
+.social-media-img {
+  width: 5vh;
+  
+}
+
+.description {
+  font-size: 1rem;
+}
+
+.table-bordered { 
+  border: solid 1px black;
+}
