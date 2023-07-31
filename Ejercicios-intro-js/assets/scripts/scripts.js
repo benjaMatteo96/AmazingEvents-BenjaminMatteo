@@ -154,3 +154,35 @@ a. Mi edad es igual a la de mi compañero: false
 b. Mi edad es mayor a la de mi compañero: true
 c. Mi edad es menor a la de mi compañero: false */
 
+let mi_edad = Number(prompt("Ingresa tu edad"));
+let edad_companiero = Number(prompt("Ingresa la edad de tu companiero"));
+
+console.log(mi_edad)
+console.log(edad_companiero)
+
+let edadesIguales = mi_edad === edad_companiero;
+let soyMayor = miEdad > edad_companiero;
+let soyMenor = miEdad < edad_companiero;
+
+console.log("Mi edad es igual a la de mi companiero" + " " + edadesIguales)
+console.log("Mi edad es mayor a la de mi companiero" + " " + soyMayor)
+console.log("Mi edad es menor a la de mi companiero" + " " + soyMenor)
+
+/* 18) Introducir por pantalla la edad y la altura de una persona y guardarlas en variables
+separadas y en una variable llamada puedeSubir el resultado de la operación
+resultante de si la persona es mayor de 6 años y además tiene una altura mínima de
+120 cm y mostrar por consola un mensaje como el siguiente: Puede subir a la
+atracción y el valor de la variable resultante. */
+
+let edad_persona = Number(prompt("Ingrese la edad de la persona"))
+let altura_persona = Number(prompt("Ingrese la altura de la persona en cm"))
+let puedeSubir = edad_persona > 6 || altura_persona >=120;
+
+console.log("puede surbir a la atraccion" + " " + puedeSubir)
+
+/* 19) Introducir por pantalla el pase de una persona el cual puede ser “VIP”, “NORMAL” o
+“LIMITADO”, el saldo que dispone y guardarlos en variables separadas. En una variable
+llamada puedePasar guardar el resultado de la operación resultante de si la persona
+tiene pase “VIP” o si posee un saldo mayor a 1000. Mostrando un mensaje que diga: La
+persona puede pasar y el resultado de la variable. */
+
