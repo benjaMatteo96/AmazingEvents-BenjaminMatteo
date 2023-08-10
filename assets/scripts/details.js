@@ -9,7 +9,7 @@ const atributoId = objetoUrl.get("id") /* obtengo el valor asociado a un query p
 /* Obtengo el filtrado de todos los objetos que sean iguales al valor de mi queryparam */
 const objetoId = data.events.find(objetoId => objetoId._id === atributoId) 
 
-
+/* Obtengo mi elemento por Id */
 const tarjetaDetails = document.getElementById("tarjeta-details")
 
 
