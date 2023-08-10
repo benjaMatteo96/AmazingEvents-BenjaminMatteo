@@ -2,6 +2,7 @@
 console.log(data.events[0].date) */
 
 const pastCards= document.getElementById('pastCards')
+const checkBoxes = document.getElementById("checkBoxes-container")
 
 
 function crearTarjeta (data){
@@ -13,7 +14,7 @@ function crearTarjeta (data){
               <p class="card-text"> ${data.description}</p>
               <div class="d-flex justify-content-between">
                 <p> ${data.price}</p>
-                <a href="../pages/details.html" target="__blank" class="btn btn-primary"> Details</a>
+                <a href="../pages/details.html?id=${data._id}" class="btn btn-primary"> Details</a>
               </div>
             </div>
         </div>`
@@ -43,6 +44,35 @@ function mostrarTarjeta (listaDeDatos, card) {
 
 mostrarTarjeta(pastEvents, pastCards)  
 
+function crearCheckboxes(elemento){
+  return `<div>
+           <input type="checkbox" id="${elemento}">
+           <label for="${elemento}">${elemento}</label>
+         </div>`
+ }
+
+
+/* Creo una lista, que contenga como elementos, las categorias */
+const categoriaDeEventos = data.events.map(categoria => categoria.category)
+
+/* Hago que en mi lista de categorias no se repita ningun elemento */
+/* Set es una estructura de datos */
+const set = new Set (categoriaDeEventos)
+
+/* Creo una nueva array con los elementos de mi constante set */
+const categoriasSinRepetir = Array.from(set)
+
+  function imprimirCheckboxes(listaEventos, checkboxes){
+   
+    for (const elemento of listaEventos) {
+      
+        const checkbox = crearCheckboxes(elemento)
+        checkboxes.innerHTML+=checkbox  
+      }
+      
+    } 
+
+imprimirCheckboxes(categoriasSinRepetir, checkBoxes)
 
 
 
