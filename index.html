@@ -103,17 +103,19 @@
 
   <main>
     <nav class="navbar bg-body-tertiary">
-      <div class="container-fluid nav-forms">
-        <form class="d-flex flex-wrap gap-4 checkbox-form" id="checkBoxes-container">
-        </form>
+      <form class="container-fluid nav-forms" id="form">
+        <!-- CHECKBOX CONTAINER -->
+        <div class="d-flex flex-wrap gap-4 checkbox-form" id="checkBoxes-container">
+        </div>
 
-        <form  class="mt-2" id="form-busqueda">
+        <div>
           <input type="text" id="input-busqueda">
           <button class="btn btn-primary" id="button-busqueda">
             <i class="fas fa-search"></i> <!-- El ícono de lupa -->
           </button>
-        </form>
-      </div>
+        </div>
+        
+      </form>
     </nav>
     <!-- d-flex flex-wrap justify-content-center align-items-center grid gap-4 sections -->
     <div class="d-flex flex-wrap justify-content-center grid gap-5 mt-5" id="homeCards">

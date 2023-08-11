@@ -1,6 +1,9 @@
-
 const UpComingCards= document.getElementById('UpComingCards')
 const checkBoxes = document.getElementById("checkBoxes-container")
+const inputBusqueda = document.getElementById("input-busqueda")
+const buttonBusqueda = document.getElementById("button-busqueda")
+const formCheckAndBusqueda = document.getElementById("form")
+
 
 function crearTarjeta (data){
 
