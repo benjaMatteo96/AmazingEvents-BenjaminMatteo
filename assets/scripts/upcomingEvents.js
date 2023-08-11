@@ -3,7 +3,7 @@ const checkBoxes = document.getElementById("checkBoxes-container")
 const inputBusqueda = document.getElementById("input-busqueda")
 const buttonBusqueda = document.getElementById("button-busqueda")
 const formCheckAndBusqueda = document.getElementById("form")
-
+/* Seleccion los elementos de html */
 
 function crearTarjeta (data){
 
@@ -31,12 +31,13 @@ function filtrarDatos(datos){
 }
 
 const UpComingEvents = filtrarDatos(data.events)
+console.log(UpComingEvents)
 
 function mostrarTarjeta (listaDeDatos, card) {
-  card.innerHTML = " " 
+  card.innerHTML = " " /* Borro el contenido de card */
   for ( datas of listaDeDatos) { 
       /* Necesito una condicion que me ayude a iterar solo datas con el valor date > a current data */
-        const crear = crearTarjeta (datas)/* Manipular cada elemento de la lista en el string dado en crear tarjetas */
+        const crear = crearTarjeta (datas)/* Manipular cada elemento de la lista UpcomingEvents en la plantillas sting  dado en crear tarjetas */
         card.innerHTML += crear /* Mostrar dicho string previamente manipulado  */
 
   }

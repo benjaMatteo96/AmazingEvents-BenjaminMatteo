@@ -83,7 +83,7 @@ function filtroPorCheck (listaEventos) {
     /* De este nuevo array solo quiero trabajar con el value */
     const arrayChecksMap = arrayChecks.map(elemento => elemento.value)
     /* De mi array eventos, filtro solo los objetos (evento) donde el valor de catgegoria es igual al valor de mi arrayCheckMaps */
-    const filtrarEventos =  listaEventos.filter(evento => arrayChecksMap.includes(evento.category.toLowerCase()) || arrayChecksMap.length === 0)
+    const filtrarEventos =  listaEventos.filter(evento => arrayChecksMap.includes(evento.category) || arrayChecksMap.length === 0)
     console.log(filtrarEventos)
     console.log(arrayChecksMap)
     return filtrarEventos
