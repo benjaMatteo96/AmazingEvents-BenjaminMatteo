@@ -109,22 +109,21 @@
     <main>
       
       <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid nav-forms">
-            <form class="d-flex flex-wrap gap-4 checkbox-form" role="search" id="checkBoxes-container">
-              
-                  
-                
-                
-                
-              </form>
-  
-              <form action="#" class="mt-2">
-                <input type="text">
-                <button type="button" class="btn btn-primary">
-                  <i class="fas fa-search"></i> <!-- El ícono de lupa -->
-                </button>
-              </form>
-        </div>
+        
+          <form class="container-fluid nav-forms" id="form">
+            <!-- CHECKBOX CONTAINER -->
+            <div class="d-flex flex-wrap gap-4 checkbox-form" id="checkBoxes-container">
+            </div>
+    
+            <div>
+              <input type="text" id="input-busqueda">
+              <button class="btn btn-primary" id="button-busqueda">
+                <i class="fas fa-search"></i> <!-- El ícono de lupa -->
+              </button>
+            </div>
+            
+          </form>
+        
       </nav>
       <!-- d-flex flex-wrap justify-content-center align-items-center grid gap-4 sections -->
       <div class="d-flex flex-wrap justify-content-center grid gap-5 mt-5" id="pastCards">

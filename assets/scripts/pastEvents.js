@@ -21,6 +21,7 @@ function crearTarjeta (data){
             </div>
         </div>`
 }
+const creaTarjetas = crearTarjeta
 
 function filtrarDatos(datos){
   const datosFiltrados = []
@@ -40,6 +41,7 @@ function mostrarTarjeta (listaDeDatos, card) {
       /* if (data.date > data.currentDate){ */
         const crear = crearTarjeta (datas)/* Manipular cada elemento de la lista en el string dado en crear tarjetas */
         card.innerHTML = card.innerHTML + crear /* Mostrar dicho string previamente manipulado  */
+        
       /* } */
   }
 }
@@ -53,7 +55,7 @@ function crearCheckboxes(elemento){
          </div>`
  }
 
-
+ const creaCheckbox = crearCheckboxes()
 /* Creo una lista, que contenga como elementos, las categorias */
 const categoriaDeEventos = data.events.map(categoria => categoria.category)
 
@@ -108,7 +110,7 @@ const valorIngresado = inputBusqueda.value;
 /* console.log(valorIngresado); */
 let filtro = filtroPorBusqueda(valorIngresado)
 let filtroCruzado = filtroPorCheck(filtro)
-mostrarTarjeta(filtroCruzado,homeCards)
+mostrarTarjeta(filtroCruzado,pastCards)
 
 
 });

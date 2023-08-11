@@ -83,7 +83,9 @@ function filtroPorCheck (listaEventos) {
     /* De este nuevo array solo quiero trabajar con el value */
     const arrayChecksMap = arrayChecks.map(elemento => elemento.value)
     /* De mi array eventos, filtro solo los objetos (evento) donde el valor de catgegoria es igual al valor de mi arrayCheckMaps */
-    const filtrarEventos =  listaEventos.filter(evento => arrayChecksMap.includes(evento.category) || arrayChecksMap.length === 0)
+    const filtrarEventos =  listaEventos.filter(evento => arrayChecksMap.includes(evento.category.toLowerCase()) || arrayChecksMap.length === 0)
+    console.log(filtrarEventos)
+    console.log(arrayChecksMap)
     return filtrarEventos
     
 }
@@ -94,8 +96,9 @@ function filtroPorCheck (listaEventos) {
 function filtroPorBusqueda(valor) {
   /* Guardo el valor ingresado por el usuario en una variable al hacer click en el boton */
     
-    const filtrobusqueda = data.events.filter(objeto => objeto.name.includes(valor))
-    console.log(filtrobusqueda) 
+    const filtrobusqueda = data.events.filter(objeto => objeto.name.toLowerCase().includes(valor.toLowerCase()))
+    console.log(filtrobusqueda)
+
     return filtrobusqueda
   
   }
@@ -112,8 +115,10 @@ buttonBusqueda.addEventListener("click", (e) => {
 });
 
 checkBoxes.addEventListener('change', () => {
+  
   const valorIngresado = inputBusqueda.value;
-  /* console.log(valorIngresado); */
+
+   console.log(valorIngresado)
   let filtro = filtroPorBusqueda(valorIngresado)
   let filtroCruzado = filtroPorCheck(filtro)
   mostrarTarjeta(filtroCruzado,homeCards)
