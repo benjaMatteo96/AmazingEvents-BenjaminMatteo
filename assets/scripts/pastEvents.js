@@ -36,11 +36,12 @@ function filtrarDatos(datos){
 const pastEvents = filtrarDatos(data.events)
 
 function mostrarTarjeta (listaDeDatos, card) { 
+  card.innerHTML = " "
   for ( datas of listaDeDatos) { 
       /* Necesito una condicion que me ayude a iterar solo datas con el valor date > a current data */
       /* if (data.date > data.currentDate){ */
         const crear = crearTarjeta (datas)/* Manipular cada elemento de la lista en el string dado en crear tarjetas */
-        card.innerHTML = card.innerHTML + crear /* Mostrar dicho string previamente manipulado  */
+        card.innerHTML +=crear /* Mostrar dicho string previamente manipulado  */
         
       /* } */
   }
@@ -55,9 +56,9 @@ function crearCheckboxes(elemento){
          </div>`
  }
 
- const creaCheckbox = crearCheckboxes()
+/*  const creaCheckbox = crearCheckboxes() */
 /* Creo una lista, que contenga como elementos, las categorias */
-const categoriaDeEventos = data.events.map(categoria => categoria.category)
+const categoriaDeEventos = pastEvents.map(categoria => categoria.category)
 
 /* Hago que en mi lista de categorias no se repita ningun elemento */
 /* Set es una estructura de datos */
@@ -85,9 +86,9 @@ function filtroPorCheck (listaEventos) {
   /* Como lo anterior me devuelve un node list, para trabajarlo, lo converti en un array */
   const arrayChecks = Array.from(allCheckboxes)
   /* De este nuevo array solo quiero trabajar con el value */
-  const arrayChecksMap = arrayChecks.map(elemento => elemento.value)
+  const arrayChecksMap = arrayChecks.map(elemento => elemento.id.toLowerCase())
   /* De mi array eventos, filtro solo los objetos (evento) donde el valor de catgegoria es igual al valor de mi arrayCheckMaps */
-  const filtrarEventos =  listaEventos.filter(evento => arrayChecksMap.includes(evento.category) || arrayChecksMap.length === 0)
+  const filtrarEventos =  listaEventos.filter(evento => arrayChecksMap.includes(evento.category.toLowerCase()) || arrayChecksMap.length === 0)
   return filtrarEventos
   
 }
@@ -98,7 +99,7 @@ function filtroPorCheck (listaEventos) {
 function filtroPorBusqueda(valor) {
 /* Guardo el valor ingresado por el usuario en una variable al hacer click en el boton */
   
-  const filtrobusqueda = data.events.filter(objeto => objeto.name.includes(valor))
+  const filtrobusqueda = data.events.filter(objeto => objeto.name.toLowerCase().includes(valor.toLowerCase()))
   console.log(filtrobusqueda) 
   return filtrobusqueda
 

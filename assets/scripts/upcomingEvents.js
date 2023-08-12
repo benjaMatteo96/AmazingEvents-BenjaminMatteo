@@ -21,28 +21,28 @@ function crearTarjeta (data){
 }
 
 function filtrarDatos(datos){
-  const datosFiltrados = []
+  const datosFiltrados = [] /*Aqui van los elementos asociados a la condicion de abajo. */
   for (const dato of datos ) {
     if (dato.date > data.currentDate){
       datosFiltrados.push(dato)
     }
   }
+  
   return datosFiltrados
 }
 
+
 const UpComingEvents = filtrarDatos(data.events)
-console.log(UpComingEvents)
 
 function mostrarTarjeta (listaDeDatos, card) {
   card.innerHTML = " " /* Borro el contenido de card */
   for ( datas of listaDeDatos) { 
-      /* Necesito una condicion que me ayude a iterar solo datas con el valor date > a current data */
         const crear = crearTarjeta (datas)/* Manipular cada elemento de la lista UpcomingEvents en la plantillas sting  dado en crear tarjetas */
         card.innerHTML += crear /* Mostrar dicho string previamente manipulado  */
-
   }
 }
 mostrarTarjeta(UpComingEvents, UpComingCards)  
+
 
 function crearCheckboxes(elemento){
   return `<div>
@@ -50,7 +50,6 @@ function crearCheckboxes(elemento){
            <label for="${elemento}">${elemento}</label>
          </div>`
  }
-
 
 /* Creo una lista, que contenga como elementos, las categorias */
 const categoriaDeEventos = UpComingEvents.map(categoria => categoria.category)
@@ -84,6 +83,7 @@ function filtroPorCheck (listaEventos) {
   /* Como lo anterior me devuelve un node list, para trabajarlo, lo converti en un array */
   const arrayChecks = Array.from(allCheckboxes)
   /* De este nuevo array solo quiero trabajar con el value */
+  console.log(arrayChecks)
   const arrayChecksMap = arrayChecks.map(elemento => elemento.id.toLowerCase())
   console.log(arrayChecksMap)
   /* De mi array eventos, filtro solo los objetos (evento) donde el valor de categoria es igual al valor de mi arrayCheckMaps */
@@ -96,10 +96,11 @@ function filtroPorCheck (listaEventos) {
 /* <--------------------------------------------------------------------------------------> */
 
 function filtroPorBusqueda(valor, data) {
-/* Guardo el valor ingresado por el usuario en una variable al hacer click en el boton */
+
   if (valor === "") {
     return data
   }
+  /*El filtro tiene los elementos de mi array UpComingEvents que incluyan el valor ingresado por el usuario (variable llamada valor Ingresado.) */
   const filtrobusqueda = data.filter(objeto => objeto.name.toLowerCase().includes(valor.toLowerCase()))
   console.log(filtrobusqueda) 
   return filtrobusqueda
@@ -111,6 +112,7 @@ e.preventDefault()
 const valorIngresado = inputBusqueda.value;
 /* console.log(valorIngresado); */
 let filtro = filtroPorBusqueda(valorIngresado,UpComingEvents)
+/* filtroCruzado  almacena la funcion filtroPorCheck usando como argumento el filtro por busqueda*/
 let filtroCruzado = filtroPorCheck(filtro)
 mostrarTarjeta(filtroCruzado,UpComingCards)
 
