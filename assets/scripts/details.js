@@ -1,4 +1,4 @@
-console.log(data.events)
+/* console.log(data.events) */
 
 const queryString = location.search /* Obteniendo el query string */
 
@@ -7,7 +7,8 @@ const objetoUrl = new URLSearchParams(queryString)
 const atributoId = objetoUrl.get("id") /* obtengo el valor asociado a un query param */
 
 /* Obtengo el filtrado de todos los objetos que sean iguales al valor de mi queryparam */
-const objetoId = data.events.find(objetoId => objetoId._id === atributoId) 
+const objetoId = data.events.find(objetoId => objetoId._id === atributoId)
+console.log(objetoId)
 
 /* Obtengo mi elemento por Id */
 const tarjetaDetails = document.getElementById("tarjeta-details")
@@ -35,5 +36,4 @@ function crearCarta (objeto) {
   `
 }
 const tarjetaCreada = crearCarta(objetoId)
-console.log(tarjetaCreada)
 tarjetaDetails.innerHTML = tarjetaCreada

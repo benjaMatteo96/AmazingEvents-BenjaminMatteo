@@ -49,6 +49,7 @@ function mostrarTarjeta (listaDeDatos, card) {
 
 mostrarTarjeta(pastEvents, pastCards)  
 
+/* Plantilla de strings para crear checkbox */
 function crearCheckboxes(elemento){
   return `<div>
            <input type="checkbox" id="${elemento}">

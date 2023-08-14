@@ -82,12 +82,12 @@ function filtroPorCheck (listaEventos) {
   console.log(allCheckboxes)
   /* Como lo anterior me devuelve un node list, para trabajarlo, lo converti en un array */
   const arrayChecks = Array.from(allCheckboxes)
-  /* De este nuevo array solo quiero trabajar con el value */
-  console.log(arrayChecks)
+  /* De este nuevo array solo quiero trabajar con el id */
   const arrayChecksMap = arrayChecks.map(elemento => elemento.id.toLowerCase())
   console.log(arrayChecksMap)
   /* De mi array eventos, filtro solo los objetos (evento) donde el valor de categoria es igual al valor de mi arrayCheckMaps */
   const filtrarEventos =  listaEventos.filter(evento => arrayChecksMap.includes(evento.category.toLowerCase()) || arrayChecksMap.length === 0)
+  console.log(filtrarEventos)
   return filtrarEventos
   
 }
@@ -115,15 +115,13 @@ let filtro = filtroPorBusqueda(valorIngresado,UpComingEvents)
 /* filtroCruzado  almacena la funcion filtroPorCheck usando como argumento el filtro por busqueda*/
 let filtroCruzado = filtroPorCheck(filtro)
 mostrarTarjeta(filtroCruzado,UpComingCards)
-
+ 
 
 });
 
 checkBoxes.addEventListener('change', () => {
 const valorIngresado = inputBusqueda.value;
-console.log(valorIngresado); 
 let filtro = filtroPorBusqueda(valorIngresado,UpComingEvents)
-console.log(filtro)
 let filtroCruzado = filtroPorCheck(filtro)
 mostrarTarjeta(filtroCruzado,UpComingCards)
 })
@@ -131,9 +129,6 @@ mostrarTarjeta(filtroCruzado,UpComingCards)
 function filtroCruzado(valor,valor2){
 filtroPorBusqueda(valor)
 filtroPorCheck(valor2)
-console.log(valor)
-console.log(valor2)
-
 }
 
 /* filtroCruzado() */

@@ -4,7 +4,9 @@ const inputBusqueda = document.getElementById("input-busqueda")
 const buttonBusqueda = document.getElementById("button-busqueda")
 const formCheckAndBusqueda = document.getElementById("form")
 
-console.log(data.events)
+fetch("https://mindhub-xj03.onrender.com/api/amazing")
+.then(response => response.json())
+.then(response => response.json())
 
 function crearTarjeta(data) {
 
