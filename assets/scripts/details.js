@@ -1,5 +1,8 @@
 /* console.log(data.events) */
 
+
+
+
 const queryString = location.search /* Obteniendo el query string */
 
 const objetoUrl = new URLSearchParams(queryString)

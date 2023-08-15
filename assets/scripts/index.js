@@ -4,9 +4,26 @@ const inputBusqueda = document.getElementById("input-busqueda")
 const buttonBusqueda = document.getElementById("button-busqueda")
 const formCheckAndBusqueda = document.getElementById("form")
 
-fetch("https://mindhub-xj03.onrender.com/api/amazing")
+  fetch("https://mindhub-xj03.onrender.com/api/amazing")
 .then(response => response.json())
-.then(response => response.json())
+.then(response =>  {
+    const newEventsarray = response;
+    const events = newEventsarray.events
+    const currentDate = newEventsarray.currentDate
+    console.log(currentDate)
+    console.log(events)
+    console.log(newEventsarray)
+
+    mostrarTarjeta(events,homeCards)
+    /* function crearNuevasTarjetas(array,card){
+      
+    }
+
+    crearNuevasTarjetas(events,homeCards)
+ */
+  })
+
+.catch(error => console.log(error))
 
 function crearTarjeta(data) {
 
@@ -37,8 +54,6 @@ function mostrarTarjeta(listaDeDatos, card) {
 /* Cree esta constante para ver si me sirve, para mostrar solo las tarjetas que cumplan
 la condicion de si el valor nombre de los inputs check es igual al de la categoria de eventos */
 
-
-mostrarTarjeta(data.events, homeCards)
 
   /* CHECKBOXES linea 109 index.html */
 
