@@ -1,42 +1,50 @@
 /* console.log(data.events) */
-
-
-
-
-const queryString = location.search /* Obteniendo el query string */
+const queryString = location.search
 
 const objetoUrl = new URLSearchParams(queryString)
 
-const atributoId = objetoUrl.get("id") /* obtengo el valor asociado a un query param */
+const atributoId = objetoUrl.get("id") 
 
-/* Obtengo el filtrado de todos los objetos que sean iguales al valor de mi queryparam */
-const objetoId = data.events.find(objetoId => objetoId._id === atributoId)
-console.log(objetoId)
+fetch("https://mindhub-xj03.onrender.com/api/amazing")
+.then(response => response.json())
+.then(response  =>  {
+    const newEventsarray = response;
+    console.log(newEventsarray)
+    const events = newEventsarray.events
+    console.log(events)
 
-/* Obtengo mi elemento por Id */
-const tarjetaDetails = document.getElementById("tarjeta-details")
+    mostrarTarjeta(events,tarjetaDetails,atributoId)
 
+  })
 
-function crearCarta (objeto) {
-  return `<div class="card m-5">
-  <div class="row g-0">
-    <div class="col-md-8">
-      <img src="${objeto.image}" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-4">
-      <div class="card-body description">
-        <h5 class="card-title"></h5>
-        <p>Date: ${objeto.date}</p>
-        <p>Category: ${objeto.category}</p>
-        <p>Capacity: ${objeto.capacity}</p>
-        <p>assistance: ${objeto.assistance} </p>
-        <p class="card-text"></p>
-        <p>Price: ${objeto.price}</p>
+  const tarjetaDetails = document.getElementById("tarjeta-details")
+  
+  
+  function crearCarta (objeto) {
+    return `<div class="card m-5">
+    <div class="row g-0">
+      <div class="col-md-8">
+        <img src="${objeto.image}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-4">
+        <div class="card-body description">
+          <h5 class="card-title"></h5>
+          <p>Date: ${objeto.date}</p>
+          <p>Category: ${objeto.category}</p>
+          <p>Capacity: ${objeto.capacity}</p>
+          <p>assistance: ${objeto.assistance ? objeto.assistance: objeto.estimate} </p>
+          <p class="card-text"></p>
+          <p>Price: ${objeto.price}</p>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
-  `
-}
-const tarjetaCreada = crearCarta(objetoId)
-tarjetaDetails.innerHTML = tarjetaCreada
+    </div>
+    `
+  }
+  function mostrarTarjeta (array, card, idObjeto){
+      const objetoId = array.find(elemento => elemento._id == idObjeto)
+     
+      const tarjetaCreada = crearCarta(objetoId)
+   
+      card.innerHTML = tarjetaCreada
+  }
