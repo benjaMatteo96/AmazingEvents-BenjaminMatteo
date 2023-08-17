@@ -25,25 +25,27 @@ fetch("https://mindhub-xj03.onrender.com/api/amazing")
         AssistancePercent: (element.assistance * 100) / element.capacity
       }
     })
-    
+
     const arraySameCategory = arrayCategories.map(category => newPastObject.filter(object => object.Categories === category))
-   
+    const revenueArray = []
     for (const array of arraySameCategory) {
       const revenueReduce = array.reduce((acc, item) => {
         return acc + item.Revenues
       }, 0)
+      revenueArray.push(revenueReduce)
 
-      console.log(revenueReduce)
     }
+    console.log("Lista con los Revenue:", revenueArray)
 
+    const percentArray = []
     for (const array of arraySameCategory) {
-      const percentReduce = array.reduce( (acc,item) => {
-        return acc + item.AssistancePercent/array.length
-      },0) 
-      
-      console.log(percentReduce)
-      }
+      const percentReduce = array.reduce((acc, item) => {
+        return acc + item.AssistancePercent / array.length
+      }, 0)
+      percentArray.push(percentReduce)
 
+    }
+    console.log("Lista con los Porcentajes:", percentArray)
 
     const futureEvents = filtrarDatosFuturos(events, currentDate) /* future events*/
     const elementsWithAssistance = events.filter(element => element.assistance)  /* only events with assistance*/
@@ -62,7 +64,12 @@ fetch("https://mindhub-xj03.onrender.com/api/amazing")
       return b.capacity - a.capacity
     }).find(element => Math.max(element.capacity))
     containerFirstTable.innerHTML = cardFirstTable(objectHighestAsisstance, objetctLowestAssistance, eLargerCapacity)
-    secondTableBody.innerHTML = cardSecondTable(arrayCategories)
+
+    console.log(arrayCategories)
+
+    cardSecondTableCategory(arrayCategories,revenueArray,percentArray)
+
+    
 
 
   }) /* end of fetch*/
@@ -76,21 +83,27 @@ function cardFirstTable(object, object2, object3) {
 
 }
 
-function cardSecondTable(array, card) {
+function cardSecondTableCategory(aCategory,aRevenues,aPercent) {
 
-  for (const element of array) {
-    return ` 
-          <tr>
-              <td>${element}</td>
-              <td></td>
-              <td></td>
-          </tr>`
-
-
-  }
-
-
+  aCategory.forEach((element,index) => {
+    secondTableBody.innerHTML+= ` 
+    <tr>
+      <td>${element}</td>
+      <td>${aRevenues[index]}</td> 
+      <td>${aPercent[index]}</td>  
+    </tr>
+                
+    `
+  }); 
+    
 }
+console.log(containerSecondTable)
 
+function cardSecondTableRevenues(array){
+  for (const element of array) {
+    containerSecondTable.innerHTML+= `<td>${element}</td>
+    `
+  }
+}
 
 
