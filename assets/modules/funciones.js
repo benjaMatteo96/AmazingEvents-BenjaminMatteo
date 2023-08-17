@@ -62,3 +62,29 @@ export function imprimirCheckboxes(listaEventos, checkboxes) {
   }
   return categoriasSinRepetir
 }
+
+export function filtrarDatosFuturos(datos,currentDate) {
+  const datosFiltrados = [] 
+  console.log(datosFiltrados)
+  for (const dato of datos) {
+    if (dato.date > currentDate) {
+      datosFiltrados.push(dato)
+    }
+  }
+
+  return datosFiltrados
+}
+
+export function filtrarDatosPasados(datos,currentDate) {
+  const datosFiltrados = [] 
+  console.log(datosFiltrados)
+  for (const dato of datos) {
+    if (dato.date < currentDate) {
+      datosFiltrados.push(dato)
+    }
+  }
+
+  return datosFiltrados
+}
+
+

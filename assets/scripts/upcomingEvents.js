@@ -1,4 +1,4 @@
-import {mostrarTarjeta,filtroPorBusqueda,filtroPorCheck, crearCheckboxes, imprimirCheckboxes} from "../modules/funciones.js"
+import {mostrarTarjeta,filtroPorBusqueda,filtroPorCheck, crearCheckboxes, imprimirCheckboxes,filtrarDatosFuturos } from "../modules/funciones.js"
 
 const UpComingCards = document.getElementById('UpComingCards')
 const checkBoxes = document.getElementById("checkBoxes-container")
@@ -14,11 +14,12 @@ fetch("https://mindhub-xj03.onrender.com/api/amazing")
     const events = newEventsobject.events
     console.log(events)
 
-    const datosfuturos= filtrarDatos(events,currentDate)
+    const datosfuturos= filtrarDatosFuturos(events,currentDate)
+    console.log(datosfuturos)
 
     mostrarTarjeta(datosfuturos, UpComingCards)
     imprimirCheckboxes(datosfuturos, checkBoxes)
-    filtrarDatos(datosfuturos,currentDate)
+    filtrarDatosFuturos(datosfuturos,currentDate)
     
     buttonBusqueda.addEventListener("click", (e) => {
       e.preventDefault()
@@ -40,18 +41,6 @@ fetch("https://mindhub-xj03.onrender.com/api/amazing")
     })
   })
 
-
-function filtrarDatos(datos,currentDate) {
-  const datosFiltrados = [] 
-  console.log(datosFiltrados)
-  for (const dato of datos) {
-    if (dato.date > currentDate) {
-      datosFiltrados.push(dato)
-    }
-  }
-
-  return datosFiltrados
-}
 
 
 
